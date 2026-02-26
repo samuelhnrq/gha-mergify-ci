@@ -63,10 +63,14 @@ runs:
       with:
         python-version: "3.14"
 
+     - name: Install uv
+        uses: astral-sh/setup-uv@v7
+
     - name: Install dependencies
       shell: bash
       run: |
-        pip install mergify-cli
+        uv tool install mergify-cli
+        mergify --version
 
     - shell: bash
       id: junit-process
